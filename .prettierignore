@@ -1,0 +1,24 @@
+# node dependency
+node_modules
+
+# dist
+build
+
+# logs
+server-logs
+
+# intellij
+.idea
+
+# 실행 스크립트
+run.sh
+
+jsconfig.json
+package-lock.json
+production.env
+tmp
+template
+api_*.json
+uploads/
+keystore/
+config.env
