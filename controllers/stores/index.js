@@ -1,4 +1,4 @@
-const { getStoreMap } = require("../utils");
+const { getStoreMap } = require("../../utils");
 
 const getStoreListAll = async (req, res, next) => {
 	const storeMap = await getStoreMap();
