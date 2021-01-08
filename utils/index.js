@@ -22,4 +22,28 @@ const getStoreMap = async () => {
 	}
 };
 
-module.exports = { asyncWrapper, getStoreMap };
+const getPostcodeMap = async () => {
+	try {
+		const strStoreList = await fsPromise.readFile(`${currentDir}/${FILENAME}`, "utf8");
+		const storeList = JSON.parse(strStoreList);
+
+		const postcodeMap = new Map();
+		storeList.forEach((store) => {
+			const { name, postcode } = store;
+			postcodeMap.set(postcode.toUpperCase(), { name, postcode });
+		});
+		return postcodeMap;
+	} catch (error) {
+		console.log("error: ", error);
+	}
+};
+
+const isNumberic = (str) => {
+	return !isNaN(Number(str));
+};
+
+const greaterThanZero = (str) => {
+	return parseInt(str, 10) > 0 ? true : false;
+};
+
+module.exports = { asyncWrapper, getStoreMap, getPostcodeMap, isNumberic, greaterThanZero };
