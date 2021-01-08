@@ -2,7 +2,7 @@ const PostcodesIO = require("postcodesio-client");
 
 const searchLatLngByPostcode = async (req, res, next) => {
 	const { postcode } = req.query;
-	if (!postcode) return res.json({ msg: "우편번호를 입력하세요." });
+	if (!postcode) return res.status(404).json({ msg: `우편번호를 입력하세요.` });
 
 	const postcodes = new PostcodesIO();
 	const valid = await postcodes.validate(postcode);
